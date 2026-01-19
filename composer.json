@@ -1,0 +1,19 @@
+{
+    "name": "youcode/tech-haven",
+    "description": "A fully responsive e-commerce platform for electronic devices and gadgets. Built with [PHP OOP and Js Vanila].",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "App/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Soufyan",
+            "email": "elomranisoufyan@gmail.com"
+        }
+    ],
+    "require": {
+        "twig/twig": "^3.22"
+    }
+}
