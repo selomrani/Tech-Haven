@@ -100,4 +100,22 @@ class Product{
         $stmt->setFetchMode(PDO::FETCH_CLASS,Product::class);
         return $stmt->fetchAll();
     }
+public function updateProduct($productId) {
+    $sql = "UPDATE products SET 
+                name = :name, 
+                description = :description, 
+                price = :price, 
+                inStock = :inStock, 
+                image = :image 
+            WHERE id = :id";
+    $stmt = $this->pdo->prepare($sql);
+    $stmt->execute([
+        ':name'        => $this->name,
+        ':description' => $this->description,
+        ':price'       => $this->price,
+        ':inStock'     => $this->inStock,
+        ':image'       => $this->image,
+        ':id'          => $productId
+    ]);
+}
 }
