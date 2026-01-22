@@ -113,9 +113,10 @@ public function createUser(){
     ]);
     $this->id = $this->pdo->lastInsertId();
 }
-public function fetchByEmail($email): User{
+public static function fetchByEmail($email): User{
+    $pdo = Database::connect();
     $query = "SELECT * FROM users WHERE email = :email";
-    $stmt = $this->pdo->prepare($query);
+    $stmt = $pdo->prepare($query);
     $stmt->execute([':email' => $email]);
     $stmt->setFetchMode(PDO::FETCH_CLASS,User::class);
     $res = $stmt->fetch();

@@ -76,4 +76,15 @@ class Address{
 
         return $this;
     }
+    public function linkAddressToOrder(){
+        $query = "INSERT INTO addresses (country ,city ,street ,zipcode ,fk_order) VALUES addresses (:country ,:city ,:street ,:zipcode ) WHERE fk_order = :order";
+        $stmt = $this->pdo->prepare($query);
+        $stmt->execute([
+        ':country' => $this->country,
+        ':city' => $this->city,
+        ':street' => $this->street,
+        ':zipcode' => $this->zipcode,
+        ':order' => $this->order
+        ]);
+    }
 }
