@@ -2,7 +2,7 @@
 namespace App\Core;
 class Router {
     public function dispatch() {
-        $url = $_SERVER['PATH_INFO'] ?? '/home/index';
+        $url = $_SERVER['PATH_INFO'] ?? '/index';
         $url = trim($url, '/');
         $parts = explode('/', $url);
         $controllerName = ucfirst($parts[0]) . 'Controller'; 

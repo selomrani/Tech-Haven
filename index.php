@@ -1,61 +1,6 @@
 <?php
 
-use App\Core\Database;
-use App\Models\Category;
-use App\Models\Order;
-use App\Models\Product;
-use App\Models\User;
-
-require 'vendor/autoload.php';
-// $user = new User();
-// $user->setFirstname(firstname: "aziz");
-// $user->setLastname("elomrani");
-// $user->setEmail("e@x11.com");
-// $user->setPhone("028383332");
-// $user->setPassword("23456789");
-// $user->setRole("admin");
-// // $user->createUser();
-// $hh = $user->fetchByEmail("e@x.com");
-// echo"<pre>";
-// var_dump($hh);
-// echo"</pre>";
-
-
-// $pc = new Product();
-// $pc->setName("Asus rog stri g16");
-// $pc->setDescription("i7 13700HX AND RTX 4070");
-// $pc->setPrice(2099.98);
-// $pc->setInStock(1);
-// $pc->setImage("https://upload.wikimedia.org/wikipedia/commons/a/ac/Default_pfp.jpg");
-// $pc->addProduct();
-// // $user = new Product();
-// $all = $user->fetchAllproducts();
-// $cat = new Category();
-// $cat->setName("Laptop");
-// $cat->setDescription("aazertyu");
-// $cat->createCategory();
-// echo"<pre>";
-// var_dump(value: $pc);
-// echo"</pre>";
-// echo "suuuuuu";
-$user = User::fetchByEmail("elomranisoufyan@gmail.com");
-// $pc->setName("ammar");
-// $pc->setImage("txt");
-// $pc->setPrice(11);
-// $pc->setInStock(inStock: 0);
-// $pc->updateProduct($pc->getId());
-$xc = new Order();
-$xc->setDate("2026-01-19 15:36:23");
-$xc->setTotal("1999.22");
-$xc->setStatus("shipped");
-$xc->createOrder($user->getId());
-// echo"<pre>";
-// var_dump(value: );
-// echo"</pre>";
-// echo "suuuuuu";
-echo"-----------------------------";
-$xc->setStatus("complete");
-echo"<pre>";
-var_dump(value: $xc);
-echo"</pre>";
-$xc->updateOrder($xc->getId());
+use App\Core\Router;
+require_once './vendor/autoload.php';
+$router = new Router();
+$router->dispatch();

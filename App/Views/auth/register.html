@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register - Tech Haven</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts: Rajdhani for headings, Inter for body -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Rajdhani', 'sans-serif'],
+                    },
+                    colors: {
+                        cyber: {
+                            dark: '#050505',
+                            card: '#0a0b10',
+                            input: '#12141c',
+                            cyan: '#00f3ff',
+                            pink: '#ff00ff',
+                            purple: '#bd00ff',
+                        }
+                    },
+                    animation: {
+                        'pulse-glow': 'pulse-glow 3s infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        'pulse-glow': {
+                            '0%, 100%': { boxShadow: '0 0 15px rgba(0, 243, 255, 0.2)' },
+                            '50%': { boxShadow: '0 0 25px rgba(189, 0, 255, 0.4)' },
+                        },
+                        'float': {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #050505;
+            background-image: 
+                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
+            background-size: 30px 30px;
+            min-height: 100vh;
+        }
+        
+        .gaming-gradient {
+            background: linear-gradient(135deg, #00f3ff 0%, #bd00ff 100%);
+        }
+        
+        .gaming-text-gradient {
+            background: linear-gradient(to right, #00f3ff, #ff00ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .neon-border {
+            box-shadow: 0 0 5px rgba(0, 243, 255, 0.2), inset 0 0 5px rgba(0, 243, 255, 0.1); 
+            border: 1px solid rgba(0, 243, 255, 0.3);
+        }
+
+        .neon-border:focus-within {
+            box-shadow: 0 0 15px rgba(0, 243, 255, 0.4), inset 0 0 10px rgba(0, 243, 255, 0.1); 
+            border-color: #00f3ff;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #050505; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: #00f3ff; }
+
+        .glass-panel {
+            background: rgba(10, 11, 16, 0.85);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        
+        /* Clip path for angular gamer look */
+        .clip-notch {
+            clip-path: polygon(
+                0 0, 
+                100% 0, 
+                100% calc(100% - 20px), 
+                calc(100% - 20px) 100%, 
+                0 100%
+            );
+        }
+    </style>
+</head>
+<body class="text-gray-300 flex items-center justify-center p-4">
+
+    <!-- Glow Effect Behind Card -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-cyber-purple rounded-full mix-blend-screen filter blur-[128px] opacity-20 animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyber-cyan rounded-full mix-blend-screen filter blur-[128px] opacity-15 animate-pulse" style="animation-delay: 1s;"></div>
+    </div>
+
+    <!-- Main Container -->
+    <div class="relative w-full max-w-5xl flex flex-col md:flex-row shadow-2xl z-10 animate-fade-in-up">
+        
+        <!-- Decoration Borders -->
+        <div class="absolute -inset-[1px] bg-gradient-to-r from-cyber-cyan via-cyber-purple to-cyber-pink rounded-xl opacity-50 blur-sm"></div>
+        
+        <div class="relative flex flex-col md:flex-row w-full bg-cyber-card rounded-xl overflow-hidden border border-white/10">
+
+            <!-- Left Side: Visuals -->
+            <div class="hidden md:flex md:w-5/12 bg-[#08090f] relative overflow-hidden flex-col justify-between p-8 border-r border-white/5">
+                <!-- Background Image Overlay -->
+                <div class="absolute inset-0 z-0 opacity-40 mix-blend-overlay" 
+                     style="background-image: url('https://images.unsplash.com/photo-1593305841991-05c297ba4575?ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80'); background-size: cover; background-position: center;">
+                </div>
+                
+                <!-- Grid Overlay -->
+                <div class="absolute inset-0 z-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImEiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgNDBWMGg0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSJyZ2JhKDI1NSwyNTUsMjU1LDAuMDUpIiBzdHJva2Utd2lkdGg9IjEiLz48L3BhdHRlcm4+PC9kZWZzPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbGw9InVybCgjYSkiLz48L3N2Zz4=')] opacity-30"></div>
+
+                <div class="relative z-10">
+                    <!-- Dynamic Logo -->
+                    <div class="flex items-center gap-5 mb-12 group cursor-pointer select-none">
+                        <!-- Icon Container -->
+                        <div class="relative w-16 h-16 flex items-center justify-center">
+                            <!-- Glitch Layers (Pseudo-3D effect) -->
+                            <div class="absolute inset-0 bg-cyber-cyan/20 clip-notch transform translate-x-1 translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-200"></div>
+                            <div class="absolute inset-0 bg-cyber-pink/20 clip-notch transform -translate-x-1 -translate-y-1 group-hover:translate-x-0 group-hover:translate-y-0 transition-transform duration-200"></div>
+                            
+                            <!-- Main Icon Box -->
+                            <div class="relative w-full h-full bg-black/80 border border-cyber-cyan clip-notch flex items-center justify-center group-hover:border-cyber-pink transition-colors duration-300 shadow-[0_0_15px_rgba(0,243,255,0.15)]">
+                                <i class="fa-solid fa-dragon text-3xl text-cyber-cyan group-hover:text-cyber-pink transition-all duration-300 drop-shadow-[0_0_8px_rgba(0,243,255,0.6)]"></i>
+                            </div>
+                            
+                            <!-- Decorative Corner -->
+                            <div class="absolute -bottom-1 -right-1 w-3 h-3 border-b-2 border-r-2 border-white/30 group-hover:border-cyber-cyan transition-colors"></div>
+                        </div>
+                        
+                        <!-- Text -->
+                        <div class="flex flex-col justify-center">
+                            <h1 class="font-display text-4xl font-black tracking-widest text-white italic relative z-10 leading-none">
+                                TECH
+                                <span class="gaming-text-gradient group-hover:animate-pulse">HAVEN</span>
+                            </h1>
+                            <div class="flex items-center gap-2 mt-1">
+                                <span class="h-[1px] w-full bg-gradient-to-r from-cyber-cyan/50 to-transparent"></span>
+                                <span class="text-[10px] text-cyber-cyan font-mono whitespace-nowrap tracking-widest opacity-70">EST. 2077</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <h2 class="font-display text-4xl font-bold leading-none uppercase italic">
+                            Level Up <br>
+                            <span class="gaming-text-gradient">Your Battlestation</span>
+                        </h2>
+                        <div class="w-16 h-1 bg-gradient-to-r from-cyber-cyan to-transparent"></div>
+                        <p class="text-gray-400 font-light leading-relaxed">
+                            Access the vault of high-performance components. From liquid-cooled beasts to ultra-light peripherals. 
+                            <span class="text-white font-medium">Gear up. Game on.</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Stats / Floating Element -->
+                <div class="relative z-10 animate-float">
+                    <div class="glass-panel p-4 rounded-lg border-l-4 border-cyber-pink max-w-[240px]">
+                        <div class="flex items-center gap-3 mb-2">
+                            <i class="fa-solid fa-fire text-cyber-pink"></i>
+                            <span class="text-xs font-bold uppercase tracking-widest text-cyber-pink">Trending Now</span>
+                        </div>
+                        <p class="text-sm text-white font-medium">RTX 5090 Restock</p>
+                        <div class="mt-2 w-full bg-gray-800 h-1.5 rounded-full overflow-hidden">
+                            <div class="bg-cyber-pink h-full w-[85%] shadow-[0_0_10px_#ff00ff]"></div>
+                        </div>
+                        <p class="text-[10px] text-right text-gray-500 mt-1">85% Claimed</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Form -->
+            <div class="w-full md:w-7/12 p-8 md:p-12 relative bg-cyber-dark/90">
+                <div class="absolute top-0 right-0 p-6 pointer-events-none">
+                    <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
+                        <path d="M0 0 H100 V20 H20 V100 H0 Z" fill="rgba(0, 243, 255, 0.1)"/>
+                    </svg>
+                </div>
+
+                <div class="mb-8">
+                    <h2 class="font-display text-3xl font-bold text-white mb-2 uppercase tracking-wide">Create Account</h2>
+                    <p class="text-gray-500 text-sm">Already have an account? <a href="login.html" class="text-cyber-cyan hover:text-cyber-pink transition-colors font-medium hover:underline decoration-cyber-pink/50">Sign In</a></p>
+                </div>
+
+                <!-- Feedback Message Container -->
+                <div id="message-container" class="hidden mb-6 p-4 rounded bg-gray-900 border-l-4 border-cyber-cyan text-sm relative overflow-hidden">
+                    <div class="absolute inset-0 bg-cyber-cyan/5"></div>
+                    <div class="relative z-10 flex items-center gap-3">
+                        <div id="msg-icon"></div>
+                        <div id="msg-text"></div>
+                    </div>
+                </div>
+
+                <form id="registerForm" class="space-y-6" onsubmit="handleRegister(event)">
+                    <input type="hidden" name="role" id="role" value="customer">
+
+                    <!-- Name Row -->
+                    <div class="flex flex-col md:flex-row gap-5">
+                        <div class="w-full md:w-1/2 space-y-1">
+                            <label class="text-[10px] font-bold text-cyber-cyan uppercase tracking-[0.1em] ml-1">First Name</label>
+                            <div class="relative group">
+                                <input type="text" id="firstname" name="firstname" required
+                                    class="w-full bg-cyber-input border border-gray-800 text-white text-sm rounded-sm p-3 pl-10 focus:outline-none focus:border-cyber-cyan focus:ring-1 focus:ring-cyber-cyan transition-all placeholder-gray-600 font-medium" 
+                                    placeholder="John">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-600 group-focus-within:text-cyber-cyan transition-colors">
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+                                <!-- Corner accent -->
+                                <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-gray-600 group-focus-within:border-cyber-cyan transition-colors"></div>
+                            </div>
+                        </div>
+                        <div class="w-full md:w-1/2 space-y-1">
+                            <label class="text-[10px] font-bold text-cyber-cyan uppercase tracking-[0.1em] ml-1">Last Name</label>
+                            <div class="relative group">
+                                <input type="text" id="lastname" name="lastname" required
+                                    class="w-full bg-cyber-input border border-gray-800 text-white text-sm rounded-sm p-3 pl-10 focus:outline-none focus:border-cyber-cyan focus:ring-1 focus:ring-cyber-cyan transition-all placeholder-gray-600 font-medium" 
+                                    placeholder="Doe">
+                                <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-600 group-focus-within:text-cyber-cyan transition-colors">
+                                    <i class="fa-solid fa-user"></i>
+                                </div>
+                                <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-gray-600 group-focus-within:border-cyber-cyan transition-colors"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Email -->
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-bold text-cyber-cyan uppercase tracking-[0.1em] ml-1">Email Address</label>
+                        <div class="relative group">
+                            <input type="email" id="email" name="email" required
+                                class="w-full bg-cyber-input border border-gray-800 text-white text-sm rounded-sm p-3 pl-10 focus:outline-none focus:border-cyber-cyan focus:ring-1 focus:ring-cyber-cyan transition-all placeholder-gray-600 font-medium" 
+                                placeholder="name@example.com">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-600 group-focus-within:text-cyber-cyan transition-colors">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-gray-600 group-focus-within:border-cyber-cyan transition-colors"></div>
+                        </div>
+                    </div>
+
+                    <!-- Phone -->
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-bold text-cyber-cyan uppercase tracking-[0.1em] ml-1">Phone Number</label>
+                        <div class="relative group">
+                            <input type="tel" id="phone" name="phone" required
+                                class="w-full bg-cyber-input border border-gray-800 text-white text-sm rounded-sm p-3 pl-10 focus:outline-none focus:border-cyber-cyan focus:ring-1 focus:ring-cyber-cyan transition-all placeholder-gray-600 font-medium" 
+                                placeholder="+1 (555) 000-0000">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-600 group-focus-within:text-cyber-cyan transition-colors">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-gray-600 group-focus-within:border-cyber-cyan transition-colors"></div>
+                        </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-bold text-cyber-cyan uppercase tracking-[0.1em] ml-1">Password</label>
+                        <div class="relative group">
+                            <input type="password" id="password" name="password" required minlength="8"
+                                class="w-full bg-cyber-input border border-gray-800 text-white text-sm rounded-sm p-3 pl-10 pr-10 focus:outline-none focus:border-cyber-cyan focus:ring-1 focus:ring-cyber-cyan transition-all placeholder-gray-600 font-medium" 
+                                placeholder="••••••••">
+                            <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none text-gray-600 group-focus-within:text-cyber-cyan transition-colors">
+                                <i class="fa-solid fa-lock"></i>
+                            </div>
+                            <button type="button" onclick="togglePassword('password')" class="absolute inset-y-0 right-0 flex items-center pr-3 text-gray-500 hover:text-cyber-cyan transition-colors">
+                                <i class="fa-regular fa-eye" id="password-icon"></i>
+                            </button>
+                            <div class="absolute bottom-0 right-0 w-2 h-2 border-b border-r border-gray-600 group-focus-within:border-cyber-cyan transition-colors"></div>
+                        </div>
+                    </div>
+
+                    <!-- Checkbox -->
+                    <div class="flex items-start pt-2">
+                        <div class="flex items-center h-5">
+                            <input id="terms" type="checkbox" required class="w-4 h-4 border border-gray-700 rounded bg-cyber-input checked:bg-cyber-cyan checked:border-cyber-cyan focus:ring-0 focus:ring-offset-0 transition-all cursor-pointer accent-cyan-500">
+                        </div>
+                        <label for="terms" class="ml-3 text-xs text-gray-400">I agree to the <a href="#" class="text-white hover:text-cyber-cyan underline decoration-dotted">Terms of Service</a> & <a href="#" class="text-white hover:text-cyber-cyan underline decoration-dotted">Privacy Policy</a>.</label>
+                    </div>
+
+                    <!-- Button -->
+                    <button type="submit" id="submitBtn" class="clip-notch w-full relative group overflow-hidden bg-white text-black font-display font-bold text-lg uppercase tracking-wider py-4 transition-all hover:bg-cyber-cyan hover:shadow-[0_0_20px_rgba(0,243,255,0.6)]">
+                        <div class="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/50 to-transparent -translate-x-full group-hover:animate-[shimmer_1s_infinite]"></div>
+                        <span class="relative z-10 flex items-center justify-center gap-2">
+                            Create Account <i class="fa-solid fa-chevron-right text-xs mt-0.5"></i>
+                        </span>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function togglePassword(inputId) {
+            const input = document.getElementById(inputId);
+            const icon = document.getElementById(inputId + '-icon');
+            if (input.type === "password") {
+                input.type = "text";
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = "password";
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+
+        function handleRegister(event) {
+            event.preventDefault();
+            const form = document.getElementById('registerForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const messageContainer = document.getElementById('message-container');
+            const msgIcon = document.getElementById('msg-icon');
+            const msgText = document.getElementById('msg-text');
+            
+            const formData = new FormData(form);
+            const data = Object.fromEntries(formData.entries());
+
+            // Loading State
+            submitBtn.disabled = true;
+            submitBtn.querySelector('span').innerHTML = '<i class="fa-solid fa-circle-notch fa-spin"></i> Creating Account...';
+            submitBtn.classList.add('opacity-80', 'cursor-not-allowed');
+
+            setTimeout(() => {
+                console.log("Submitting:", data);
+
+                // Success State
+                submitBtn.querySelector('span').innerHTML = 'Success';
+                submitBtn.classList.replace('bg-white', 'bg-green-500');
+                submitBtn.classList.add('text-black');
+
+                // Show Message
+                messageContainer.classList.remove('hidden', 'border-red-500');
+                messageContainer.classList.add('flex', 'border-green-500');
+                msgIcon.innerHTML = '<i class="fa-solid fa-check-circle text-green-400 text-lg"></i>';
+                msgText.innerHTML = '<span class="text-green-400 font-bold uppercase text-xs tracking-wider">Account Created</span><br><span class="text-gray-300 text-xs">Redirecting to Dashboard...</span>';
+
+                setTimeout(() => {
+                    form.reset();
+                    submitBtn.disabled = false;
+                    submitBtn.querySelector('span').innerHTML = 'Create Account <i class="fa-solid fa-chevron-right text-xs mt-0.5"></i>';
+                    submitBtn.classList.replace('bg-green-500', 'bg-white');
+                    submitBtn.classList.remove('opacity-80', 'cursor-not-allowed', 'text-black');
+                    messageContainer.classList.add('hidden');
+                }, 3000);
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
