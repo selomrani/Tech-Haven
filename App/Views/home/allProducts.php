@@ -1,3 +1,12 @@
+<?php
+
+use App\Models\Order;
+use App\Models\Product;
+
+require_once __DIR__ . './../../../vendor/autoload.php';
+$ppp = new Product();
+$allorders = $ppp->fetchAllproducts();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

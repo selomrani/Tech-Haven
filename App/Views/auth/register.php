@@ -198,7 +198,7 @@
 
                 <div class="mb-8">
                     <h2 class="font-display text-3xl font-bold text-white mb-2 uppercase tracking-wide">Create Account</h2>
-                    <p class="text-gray-500 text-sm">Already have an account? <a href="login.html" class="text-cyber-cyan hover:text-cyber-pink transition-colors font-medium hover:underline decoration-cyber-pink/50">Sign In</a></p>
+                    <p class="text-gray-500 text-sm">Already have an account? <a href="/login" class="text-cyber-cyan hover:text-cyber-pink transition-colors font-medium hover:underline decoration-cyber-pink/50">Sign In</a></p>
                 </div>
 
                 <!-- Feedback Message Container -->
@@ -210,9 +210,8 @@
                     </div>
                 </div>
 
-                <form id="registerForm" class="space-y-6" onsubmit="handleRegister(event)">
+                <form action="/signup" method="post" class="space-y-6" id="regiterfom">
                     <input type="hidden" name="role" id="role" value="customer">
-
                     <!-- Name Row -->
                     <div class="flex flex-col md:flex-row gap-5">
                         <div class="w-full md:w-1/2 space-y-1">

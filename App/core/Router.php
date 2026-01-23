@@ -3,16 +3,36 @@ namespace App\Core;
 
 class Router {
     public function dispatch($uri) {
+    $urlPath = parse_url($uri, PHP_URL_PATH);
 
-        $urlPath = parse_url($uri, PHP_URL_PATH);
-        if ($urlPath === '/' || $urlPath === '/index.php') {
+    switch ($urlPath) {
+        case '/':
+        case '/index.php':
             $this->callController('HomeController', 'renderHome');
-        } elseif ($urlPath === '/admin') {
+            break;
+        case '/admin':
             $this->callController('AdminController', 'index');
-        } else {
+            break;
+        case '/login':
+            $this->callController('AuthController','renderLogin');
+            break;
+        case '/register':
+            $this->callController('AuthController','renderRegister');
+            break;
+        case '/signup':
+            $this->callController('AuthController','register');
+            break;
+        case '/signin':
+            $this->callController('AuthController','login');
+            break;
+        case '/allproducts':
+            $this->callController('HomeController','renderAll');
+            break;
+        default:
             require_once __DIR__ . '/../Views/error/404.php';
-        }
+            break;
     }
+}
 
     private function callController($controllerName, $methodName) {
         $controllerClass = "App\\Controllers\\" . $controllerName;

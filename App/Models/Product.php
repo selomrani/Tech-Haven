@@ -13,6 +13,7 @@ class Product{
     private bool $inStock;
     private ?string $image;
     private PDO $pdo;
+    private string $category;
     public function __construct()
     {
         $this->pdo = Database::connect();
@@ -93,7 +94,7 @@ class Product{
         ]);
         $this->id = $this->pdo->lastInsertId();
     }
-    public function fetchAllproducts(): array{
+    public  function fetchAllproducts(): array{
         $query = "SELECT * FROM products";
         $stmt = $this->pdo->prepare($query);
         $stmt->execute();
@@ -118,4 +119,24 @@ public function updateProduct($productId) {
         ':id'          => $productId
     ]);
 }
+
+    /**
+     * Get the value of category
+     */ 
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set the value of category
+     *
+     * @return  self
+     */ 
+    public function setCategory($category)
+    {
+        $this->category = $category;
+
+        return $this;
+    }
 }

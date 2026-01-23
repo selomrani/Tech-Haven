@@ -126,7 +126,7 @@
 
                 <!-- Right Actions -->
                 <div class="flex items-center gap-6">
-                    <a href="login.html" class="hidden md:flex items-center gap-2 text-sm font-medium text-gray-400 hover:text-white transition-colors">
+                    <a href="/login" class="hidden md:flex items-center gap-2 text-sm font-medium text-gray-400 hover:text-white transition-colors">
                         <i class="fa-regular fa-user"></i> Sign In
                     </a>
                     <a href="#" class="relative group">
@@ -232,7 +232,7 @@
                 <h2 class="font-display text-3xl font-bold text-white uppercase italic">Featured <span class="text-cyber-cyan">Gear</span></h2>
                 <p class="text-gray-500 text-sm mt-1">High-performance equipment for elite setups.</p>
             </div>
-            <a href="#" class="text-cyber-cyan hover:text-white text-sm font-medium uppercase tracking-wider flex items-center gap-2">
+            <a href="/allproducts" class="text-cyber-cyan hover:text-white text-sm font-medium uppercase tracking-wider flex items-center gap-2">
                 View All <i class="fa-solid fa-chevron-right text-xs"></i>
             </a>
         </div>

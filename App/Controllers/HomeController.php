@@ -10,4 +10,8 @@ class HomeController {
             echo "View file not found: $viewPath";
         }
     }
+
+    public function renderAll(){
+        require_once __DIR__ . '/../Views/home/allProducts.php';
+    }
 }

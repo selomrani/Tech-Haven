@@ -100,6 +100,15 @@ class User{
 
         return $this;
     }
+    public static function checkpassword($pass,$hash){
+    if(password_verify($pass,$hash)){
+        return true;
+    }
+    else{
+        return false;
+    }
+}
+
 public function createUser(){
     $query = "INSERT INTO users (firstname,lastname,email,phone,password,role) VALUES (:firstname, :lastname, :email, :phone, :password, :role)";
     $stmt = $this->pdo->prepare($query);
@@ -121,13 +130,5 @@ public static function fetchByEmail($email): User{
     $stmt->setFetchMode(PDO::FETCH_CLASS,User::class);
     $res = $stmt->fetch();
     return  $res;
-}
-public function checkpassword($pass,$hash){
-    if(password_verify($pass,$hash)){
-        return true;
-    }
-    else{
-        return false;
-    }
 }
 }
