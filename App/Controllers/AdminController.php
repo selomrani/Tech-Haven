@@ -19,16 +19,12 @@ class AdminController{
             $product = new Product();
             $product->setName($_POST['name']);
             $product->setPrice($_POST['price']);       // Fixed: setPrice
-            $product->setDescription($_POST['description']); // Fixed: setDescription
-            
-            // Set required defaults that are missing from the form
+            $product->setDescription($_POST['description']); 
             $product->setInStock(1); 
             $product->setImage('default.jpg'); 
 
             $product->addProduct();
-            
-            // Optional: Redirect to prevent resubmission
-            header("Location: ../../index.php"); // Adjust redirection as needed
+            header("Location: ../../index.php"); 
         }
     }
 }
