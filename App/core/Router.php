@@ -1,24 +1,35 @@
 <?php
-namespace App\Core;
+
 class Router {
-    public function dispatch() {
-        $url = $_SERVER['PATH_INFO'] ?? '/index';
-        $url = trim($url, '/');
-        $parts = explode('/', $url);
-        $controllerName = ucfirst($parts[0]) . 'Controller'; 
-        $method = $parts[1] ?? 'index';
-        $params = array_slice($parts, 2);
-        $file = "../app/controllers/" . $controllerName . ".php";
-        if (file_exists($file)) {
-            require_once $file;
-            if (class_exists($controllerName)) {
-                $controllerInstance = new $controllerName();
-                if (method_exists($controllerInstance, $method)) {
-                    call_user_func_array([$controllerInstance, $method], $params);
-                }
-            }
-        } else {
-            die("404 - Controller $controllerName not found at $file");
+    
+    public function dispatch($uri) {
+        $urlPath = parse_url($uri, PHP_URL_PATH);
+        $urlPath = trim($urlPath, '/');
+
+        switch ($urlPath) {
+            case '':
+            case 'home':
+                $this->callController('PageController', 'home');
+                break;
+
+            case 'about':
+                $this->callController('PageController', 'about');
+                break;
+            
+            case 'contact':
+                $this->callController('PageController', 'contact');
+                break;
+
+            default:
+                $this->callController('PageController', 'notFound');
+                break;
         }
+    }
+
+    private function callController($controllerName, $methodName) {
+        require_once "controllers/$controllerName.php";
+        
+        $controller = new $controllerName();
+        $controller->$methodName();
     }
 }
