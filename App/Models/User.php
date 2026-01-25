@@ -122,13 +122,12 @@ public function createUser(){
     ]);
     $this->id = $this->pdo->lastInsertId();
 }
-public static function fetchByEmail($email): User{
-    $pdo = Database::connect();
-    $query = "SELECT * FROM users WHERE email = :email";
-    $stmt = $pdo->prepare($query);
-    $stmt->execute([':email' => $email]);
-    $stmt->setFetchMode(PDO::FETCH_CLASS,User::class);
-    $res = $stmt->fetch();
-    return  $res;
-}
+public static function fetchByEmail($email) {
+        $pdo = Database::connect();
+        $query = "SELECT * FROM users WHERE email = :email";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([':email' => $email]);
+        $stmt->setFetchMode(PDO::FETCH_CLASS, self::class); 
+        return $stmt->fetch();
+    }
 }

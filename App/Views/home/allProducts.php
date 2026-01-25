@@ -1,8 +1,5 @@
 <?php
-
-use App\Models\Order;
 use App\Models\Product;
-
 require_once __DIR__ . './../../../vendor/autoload.php';
 $ppp = new Product();
 $allorders = $ppp->fetchAllproducts();
@@ -151,8 +148,7 @@ $allorders = $ppp->fetchAllproducts();
 
             <!-- Grid Container (Expanded to 4 columns) -->
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-
-                <!-- Product 1: RTX 5090 -->
+                <?php foreach($allorders as $order) ?>
                 <div class="product-card bg-cyber-card border border-white/5 rounded-none clip-notch-sm overflow-hidden group">
                     <div class="relative h-40 bg-[#0f111a] flex items-center justify-center p-4">
                         <div class="absolute top-2 right-2 z-10">
@@ -179,138 +175,6 @@ $allorders = $ppp->fetchAllproducts();
                         </div>
                     </div>
                 </div>
-
-                <!-- Product 2: CPU -->
-                <div class="product-card bg-cyber-card border border-white/5 rounded-none clip-notch-sm overflow-hidden group">
-                    <div class="relative h-40 bg-[#0f111a] flex items-center justify-center p-4">
-                        <i class="fa-solid fa-memory text-6xl text-gray-700 group-hover:text-red-500 transition-colors duration-300 drop-shadow-[0_0_15px_rgba(239,68,68,0.3)] product-image"></i>
-                    </div>
-                    <div class="p-3 border-t border-white/5">
-                        <div class="text-[10px] text-gray-500 mb-1">Processors</div>
-                        <h3 class="text-white font-bold text-sm leading-tight mb-2 group-hover:text-red-500 transition-colors line-clamp-2">AMD Ryzen 9 9950X</h3>
-                        <div class="flex items-center gap-0.5 mb-3">
-                            <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
-                            <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
-                            <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
-                            <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
-                            <i class="fa-solid fa-star-half-stroke text-cyber-yellow text-[10px]"></i>
-                            <span class="text-[10px] text-gray-500 ml-1">(15)</span>
-                        </div>
-                        <div class="flex items-center justify-between mt-auto">
-                            <span class="text-lg font-display font-bold text-white">$699</span>
-                            <button class="w-7 h-7 flex items-center justify-center bg-cyber-input hover:bg-red-500 hover:text-black text-red-500 border border-red-500/30 rounded-sm transition-all">
-                                <i class="fa-solid fa-plus text-xs"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 3: Laptop -->
-                <div class="product-card bg-cyber-card border border-white/5 rounded-none clip-notch-sm overflow-hidden group">
-                    <div class="relative h-40 bg-[#0f111a] flex items-center justify-center p-4">
-                        <i class="fa-solid fa-laptop-code text-6xl text-gray-700 group-hover:text-cyber-pink transition-colors duration-300 drop-shadow-[0_0_15px_rgba(255,0,255,0.3)] product-image"></i>
-                    </div>
-                    <div class="p-3 border-t border-white/5">
-                        <div class="text-[10px] text-gray-500 mb-1">Laptops</div>
-                        <h3 class="text-white font-bold text-sm leading-tight mb-2 group-hover:text-cyber-pink transition-colors line-clamp-2">Quantum X1 Carbon</h3>
-                        <div class="flex items-center gap-0.5 mb-3">
-                            <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
-                            <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
-                            <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
-                            <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
-                            <i class="fa-regular fa-star text-gray-600 text-[10px]"></i>
-                            <span class="text-[10px] text-gray-500 ml-1">(18)</span>
-                        </div>
-                        <div class="flex items-center justify-between mt-auto">
-                            <span class="text-lg font-display font-bold text-white">$2,499</span>
-                            <button class="w-7 h-7 flex items-center justify-center bg-cyber-input hover:bg-cyber-pink hover:text-black text-cyber-pink border border-cyber-pink/30 rounded-sm transition-all">
-                                <i class="fa-solid fa-plus text-xs"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 4: Monitor -->
-                <div class="product-card bg-cyber-card border border-white/5 rounded-none clip-notch-sm overflow-hidden group">
-                    <div class="relative h-40 bg-[#0f111a] flex items-center justify-center p-4">
-                        <i class="fa-solid fa-desktop text-6xl text-gray-700 group-hover:text-cyber-purple transition-colors duration-300 drop-shadow-[0_0_15px_rgba(189,0,255,0.3)] product-image"></i>
-                    </div>
-                    <div class="p-3 border-t border-white/5">
-                        <div class="text-[10px] text-gray-500 mb-1">Monitors</div>
-                        <h3 class="text-white font-bold text-sm leading-tight mb-2 group-hover:text-cyber-purple transition-colors line-clamp-2">Odyssey Neo G9</h3>
-                        <div class="flex items-center gap-0.5 mb-3">
-                            <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
-                            <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
-                            <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
-                            <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
-                            <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
-                            <span class="text-[10px] text-gray-500 ml-1">(8)</span>
-                        </div>
-                        <div class="flex items-center justify-between mt-auto">
-                            <span class="text-lg font-display font-bold text-white">$1,299</span>
-                            <button class="w-7 h-7 flex items-center justify-center bg-cyber-input hover:bg-cyber-purple hover:text-black text-cyber-purple border border-cyber-purple/30 rounded-sm transition-all">
-                                <i class="fa-solid fa-plus text-xs"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Product 5: RAM -->
-                <div class="product-card bg-cyber-card border border-white/5 rounded-none clip-notch-sm overflow-hidden group">
-                    <div class="relative h-40 bg-[#0f111a] flex items-center justify-center p-4">
-                        <div class="absolute top-2 right-2 z-10">
-                            <span class="bg-cyber-yellow text-black text-[10px] font-bold px-1.5 py-0.5 rounded-sm uppercase">-15%</span>
-                        </div>
-                        <i class="fa-solid fa-sd-card text-6xl text-gray-700 group-hover:text-cyber-yellow transition-colors duration-300 drop-shadow-[0_0_15px_rgba(250,204,21,0.3)] product-image"></i>
-                    </div>
-                    <div class="p-3 border-t border-white/5">
-                        <div class="text-[10px] text-gray-500 mb-1">Memory</div>
-                        <h3 class="text-white font-bold text-sm leading-tight mb-2 group-hover:text-cyber-yellow transition-colors line-clamp-2">Dominator Titanium 64GB</h3>
-                        <div class="flex items-center gap-0.5 mb-3">
-                            <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
-                            <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
-                            <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
-                            <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
-                            <i class="fa-regular fa-star text-gray-600 text-[10px]"></i>
-                            <span class="text-[10px] text-gray-500 ml-1">(22)</span>
-                        </div>
-                        <div class="flex items-center justify-between mt-auto">
-                            <div class="flex flex-col">
-                                <span class="text-[10px] text-gray-500 line-through">$399</span>
-                                <span class="text-lg font-display font-bold text-white">$339</span>
-                            </div>
-                            <button class="w-7 h-7 flex items-center justify-center bg-cyber-input hover:bg-cyber-yellow hover:text-black text-cyber-yellow border border-cyber-yellow/30 rounded-sm transition-all">
-                                <i class="fa-solid fa-plus text-xs"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                 <!-- Product 6: Case -->
-                 <div class="product-card bg-cyber-card border border-white/5 rounded-none clip-notch-sm overflow-hidden group">
-                    <div class="relative h-40 bg-[#0f111a] flex items-center justify-center p-4">
-                        <i class="fa-solid fa-box text-6xl text-gray-700 group-hover:text-blue-500 transition-colors duration-300 drop-shadow-[0_0_15px_rgba(59,130,246,0.3)] product-image"></i>
-                    </div>
-                    <div class="p-3 border-t border-white/5">
-                        <div class="text-[10px] text-gray-500 mb-1">Cases</div>
-                        <h3 class="text-white font-bold text-sm leading-tight mb-2 group-hover:text-blue-500 transition-colors line-clamp-2">Lian Li O11 Dynamic</h3>
-                        <div class="flex items-center gap-0.5 mb-3">
-                            <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
-                            <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
-                            <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
-                            <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
-                            <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
-                            <span class="text-[10px] text-gray-500 ml-1">(156)</span>
-                        </div>
-                        <div class="flex items-center justify-between mt-auto">
-                            <span class="text-lg font-display font-bold text-white">$169</span>
-                            <button class="w-7 h-7 flex items-center justify-center bg-cyber-input hover:bg-blue-500 hover:text-black text-blue-500 border border-blue-500/30 rounded-sm transition-all">
-                                <i class="fa-solid fa-plus text-xs"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
             </div>
         </main>
     </div>

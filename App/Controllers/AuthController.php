@@ -2,34 +2,63 @@
 namespace App\Controllers;
 
 use App\Models\User;
-class AuthController{
-    public function renderLogin(){
+
+class AuthController
+{
+    public function renderLogin()
+    {
         require_once __DIR__ . '/../Views/auth/login.php';
     }
-    public function renderRegister(){
+
+    public function renderRegister()
+    {
         require_once __DIR__ . '/../Views/auth/register.php';
     }
-    public function register(){
-        $user = new User();
-        $user->setFirstname($_POST['firstname']);
-        $user->setLastname($_POST['lastname']);
-        $user->setEmail($_POST['email']);
-        $user->setPhone($_POST['phone']);
-        $user->setPassword($_POST['password']);
-        $user->setRole($_POST['role']);
-        $user->createUser();
-        $this->renderLogin();
+
+    public function register()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $user = new User();
+            $user->setFirstname($_POST['firstname']);
+            $user->setLastname($_POST['lastname']);
+            $user->setEmail($_POST['email']);
+            $user->setPhone($_POST['phone']);
+            $user->setPassword($_POST['password']);
+            $user->setRole($_POST['role']);
+            $user->createUser();
+            
+            header('Location: /login');
+            exit;
+        }
     }
-    public function login(){
-        if($_SERVER['REQUEST_METHOD']){
+
+    public function login()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $email = $_POST['email'];
-                $user = User::fetchByEmail($email);
-                $pass = $_POST['password'];
-                $hash = $user->getPassword();
-            if(User::checkpassword($hash,$pass)){
-                session_start();
-                if($user->getRole() == "admin") require_once __DIR__ . '/../Views/admin/dashboard.php';
-                elseif($user->getRole() == "customer") require_once __DIR__ . '/../Views/home/home.php';
+            $password = $_POST['password'];
+            $user = User::fetchByEmail($email);
+            if ($user && password_verify($password, $user->getPassword())) {
+                if (session_status() === PHP_SESSION_NONE) {
+                    session_start();
+                }
+
+                $_SESSION['user_id'] = $user->getId();
+                $_SESSION['role'] = $user->getRole();
+
+                if ($user->getRole() === 'admin') {
+                    header('Location: /admin/dashboard');
+                } else {
+                    header('Location: /home');
+                }
+                exit;
+            } else {
+                if (session_status() === PHP_SESSION_NONE) {
+                    session_start();
+                }
+                $_SESSION['error'] = "Invalid email or password.";
+                header('Location: /login');
+                exit;
             }
         }
     }
