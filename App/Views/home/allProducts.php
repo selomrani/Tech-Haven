@@ -194,7 +194,8 @@ $allproducts = $ppp->fetchAllproducts();
                             </div>
                             <div class="flex items-center justify-between mt-auto">
                                 <span class="text-lg font-display font-bold text-white">$<?= $product->getPrice() ?></span>
-                                <form method="POST" action="add_to_cart_script.php"> <input type="hidden" name="product_id" value="<?= $product->getId() ?>">
+                                <form action="/cart/add" method="POST">
+                                    <input type="hidden" name="product_id" value="<?= $product->getId() ?>">
                                     <button type="submit" class="w-7 h-7 flex items-center justify-center bg-cyber-input hover:bg-cyber-cyan hover:text-black text-cyber-cyan border border-cyber-cyan/30 rounded-sm transition-all">
                                         <i class="fa-solid fa-plus text-xs"></i>
                                     </button>

@@ -33,6 +33,12 @@ class Router {
         case '/admin/product/save':
             $this->callController('AdminController','saveProduct');
         break;
+        case '/cart':
+        $this->callController('CartController', 'viewCart');
+        break;
+        case '/cart/add':
+        $this->callController('CartController', 'addToCart');
+        break;
         default:
             require_once __DIR__ . '/../Views/error/404.php';
             break;

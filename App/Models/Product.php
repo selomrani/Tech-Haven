@@ -139,7 +139,7 @@ public function updateProduct($productId) {
 
         return $this;
     }
-    public static function find($id)
+public static function find($id)
 {
     $pdo = Database::connect();
     $query = "SELECT * FROM products WHERE id = :id";
