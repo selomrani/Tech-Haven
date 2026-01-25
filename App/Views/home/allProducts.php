@@ -104,10 +104,8 @@ $allproducts = $ppp->fetchAllproducts();
 </head>
 <body>
 
-    <!-- Simple Header (No Nav Links) -->
     <div class="bg-[#0a0b10] border-b border-white/5 py-10 text-center">
         <div class="max-w-7xl mx-auto px-4 flex flex-col items-center justify-center">
-            <!-- Logo -->
             <div class="flex items-center gap-3 group mb-4">
                 <div class="relative w-12 h-12 flex items-center justify-center bg-black border border-cyber-cyan clip-notch-sm">
                     <i class="fa-solid fa-dragon text-2xl text-cyber-cyan"></i>
@@ -127,10 +125,8 @@ $allproducts = $ppp->fetchAllproducts();
         </div>
     </div>
 
-    <!-- Main Content (Full Width, No Sidebar) -->
     <div class="max-w-7xl mx-auto px-4 py-12">
         <main class="w-full">
-            <!-- Sorting Bar -->
             <div class="flex flex-wrap items-center justify-between gap-4 mb-8 pb-6 border-b border-white/5">
                 <div class="text-cyber-pink font-mono text-sm">
                     <?= count($allproducts) ?> Items Found
@@ -146,7 +142,6 @@ $allproducts = $ppp->fetchAllproducts();
                 </div>
             </div>
 
-            <!-- Grid Container (Expanded to 4 columns) -->
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
                 <?php foreach($allproducts as $product) :?>
                 <div class="product-card bg-cyber-card border border-white/5 rounded-none clip-notch-sm overflow-hidden group">
@@ -165,8 +160,8 @@ $allproducts = $ppp->fetchAllproducts();
                             ?>
                             <span class="bg-<?= $color ?>-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-sm uppercase"><?= $stock ?></span>
                         </div>
-                        <i class="fa-solid fa-microchip text-6xl text-gray-700 group-hover:text-cyber-cyan transition-colors duration-300 drop-shadow-[0_0_15px_rgba(0,243,255,0.3)] product-image"></i>
-                    </div>
+                        <img src="<?= $product->getImage() ?>" alt="<?= $product->getName() ?>" class="h-full w-full object-cover product-image">
+                        </div>
                     <div class="p-3 border-t border-white/5">
                         <div class="text-[10px] text-gray-500 mb-1"><?= $product->getCategory() ?></div>
                         <h3 class="text-white font-bold text-sm leading-tight mb-2 group-hover:text-cyber-cyan transition-colors line-clamp-2"><?= $product->getName() ?></h3>
@@ -191,7 +186,6 @@ $allproducts = $ppp->fetchAllproducts();
         </main>
     </div>
 
-    <!-- Footer -->
     <footer class="bg-cyber-dark pt-12 pb-8 border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4 text-center">
             <p class="text-gray-600 text-xs">© 2077 Tech Haven Systems. All rights reserved.</p>

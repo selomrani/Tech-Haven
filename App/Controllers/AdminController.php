@@ -8,7 +8,6 @@ use App\Models\User;
 class AdminController {
 
     public static function saveProduct() {
-        die("The controller is working and the request was received.");
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $product = new Product;
             $product->setName($_POST['name']);

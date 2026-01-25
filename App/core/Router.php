@@ -27,13 +27,15 @@ class Router {
         case '/allproducts':
             $this->callController('HomeController','renderAll');
             break;
-        default:
         case '/logout':
             $this->callController('AuthController','logout');
-            require_once __DIR__ . '/../Views/error/404.php';
-            break;
+        break;
         case '/admin/product/save':
             $this->callController('AdminController','saveProduct');
+        break;
+        default:
+            require_once __DIR__ . '/../Views/error/404.php';
+            break;
     }
 }
 
