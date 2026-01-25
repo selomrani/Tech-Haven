@@ -1,3 +1,8 @@
+<?php 
+if(session_status() == PHP_SESSION_NONE){
+session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -129,12 +134,12 @@
             <div class="flex items-center gap-3">
                 <img src="https://i.pravatar.cc/100?img=33" alt="Admin" class="w-8 h-8 rounded-full border border-cyber-cyan/50">
                 <div class="flex flex-col">
-                    <span class="text-xs font-bold text-white">Admin User</span>
-                    <span class="text-[10px] text-gray-500">System Operator</span>
+                    <span class="text-xs font-bold text-white"><?= $admin->getFirstname() ?></span>
+                    <span class="text-[10px] text-gray-500"><?= $admin->getEmail() ?></span>
                 </div>
-                <button class="ml-auto text-gray-500 hover:text-white">
+                <button class="ml-auto text-gray-500 hover:text-white"><a href="/logout">
                     <i class="fa-solid fa-arrow-right-from-bracket"></i>
-                </button>
+                </a></button>
             </div>
         </div>
     </aside>

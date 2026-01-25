@@ -1,6 +1,5 @@
 <?php
 namespace App\Core;
-
 class Router {
     public function dispatch($uri) {
     $urlPath = parse_url($uri, PHP_URL_PATH);
@@ -11,7 +10,7 @@ class Router {
             $this->callController('HomeController', 'renderHome');
             break;
         case '/admin':
-            $this->callController('AdminController', 'index');
+            $this->callController('AdminController', 'renderDashboard');
             break;
         case '/login':
             $this->callController('AuthController','renderLogin');

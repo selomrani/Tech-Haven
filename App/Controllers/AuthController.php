@@ -45,9 +45,9 @@ class AuthController
                 $_SESSION['user_id'] = $user->getId();
                 $_SESSION['role'] = $user->getRole();
                 $_SESSION['firstname'] = $user->getFirstname();
-                $_SESSION['user_id'] = $user->getId();
-                if ($user->getRole() === 'admin') {
-                    header('Location: /admin/dashboard');
+                $_SESSION['email'] = $user->getEmail();
+                if ($user->getRole() == "admin") {
+                    header('Location: /admin');
                 } else {
                     header('Location: /');
                 }
