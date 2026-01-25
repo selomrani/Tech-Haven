@@ -191,7 +191,7 @@ session_start();
                                 <i class="fa-solid fa-plus text-cyber-cyan"></i> Add New Product
                             </h2>
 
-                            <form action="../../Controllers/AdminController.php" method="post" id="addProductForm" class="space-y-6">
+                            <form action="/admin/product/save'" method="post" id="addProductForm" class="space-y-6" enctype="multipart/form-data">
                                 <!-- Product Name -->
                                 <div class="space-y-1">
                                     <label class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Product Name</label>

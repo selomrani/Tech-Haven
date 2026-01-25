@@ -32,6 +32,8 @@ class Router {
             $this->callController('AuthController','logout');
             require_once __DIR__ . '/../Views/error/404.php';
             break;
+        case '/admin/product/save':
+            $this->callController('AdminController','saveProduct');
     }
 }
 

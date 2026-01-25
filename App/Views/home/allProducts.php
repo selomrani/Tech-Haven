@@ -133,7 +133,7 @@ $allproducts = $ppp->fetchAllproducts();
             <!-- Sorting Bar -->
             <div class="flex flex-wrap items-center justify-between gap-4 mb-8 pb-6 border-b border-white/5">
                 <div class="text-cyber-pink font-mono text-sm">
-                    1,024 Items Found
+                    <?= count($allproducts) ?> Items Found
                 </div>
                 <div class="flex items-center gap-2 ml-auto">
                     <span class="text-xs text-gray-500 uppercase font-bold">Sort By:</span>
@@ -168,7 +168,7 @@ $allproducts = $ppp->fetchAllproducts();
                         <i class="fa-solid fa-microchip text-6xl text-gray-700 group-hover:text-cyber-cyan transition-colors duration-300 drop-shadow-[0_0_15px_rgba(0,243,255,0.3)] product-image"></i>
                     </div>
                     <div class="p-3 border-t border-white/5">
-                        <div class="text-[10px] text-gray-500 mb-1">SUU</div>
+                        <div class="text-[10px] text-gray-500 mb-1"><?= $product->getCategory() ?></div>
                         <h3 class="text-white font-bold text-sm leading-tight mb-2 group-hover:text-cyber-cyan transition-colors line-clamp-2"><?= $product->getName() ?></h3>
                         <div class="flex items-center gap-0.5 mb-3">
                             <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
