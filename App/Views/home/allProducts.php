@@ -1,11 +1,14 @@
 <?php
+
 use App\Models\Product;
+
 require_once __DIR__ . './../../../vendor/autoload.php';
 $ppp = new Product();
 $allproducts = $ppp->fetchAllproducts();
 ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -13,7 +16,7 @@ $allproducts = $ppp->fetchAllproducts();
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Rajdhani:wght@500;600;700;800&display=swap" rel="stylesheet">
-    
+
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -42,13 +45,13 @@ $allproducts = $ppp->fetchAllproducts();
         body {
             font-family: 'Inter', sans-serif;
             background-color: #050505;
-            background-image: 
+            background-image:
                 linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
             background-size: 40px 40px;
             color: #e2e8f0;
         }
-        
+
         .gaming-text-gradient {
             background: linear-gradient(to right, #00f3ff, #ff00ff);
             background-clip: text;
@@ -64,20 +67,23 @@ $allproducts = $ppp->fetchAllproducts();
         .product-card {
             transition: all 0.3s ease;
         }
+
         .product-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 0 20px rgba(0, 243, 255, 0.15);
             border-color: rgba(0, 243, 255, 0.5);
         }
+
         .product-card:hover .product-image {
             transform: scale(1.05);
         }
 
         /* Range Slider Track */
         input[type=range] {
-            -webkit-appearance: none; 
-            background: transparent; 
+            -webkit-appearance: none;
+            background: transparent;
         }
+
         input[type=range]::-webkit-slider-thumb {
             -webkit-appearance: none;
             height: 16px;
@@ -85,9 +91,10 @@ $allproducts = $ppp->fetchAllproducts();
             border-radius: 50%;
             background: #00f3ff;
             cursor: pointer;
-            margin-top: -6px; 
+            margin-top: -6px;
             box-shadow: 0 0 10px #00f3ff;
         }
+
         input[type=range]::-webkit-slider-runnable-track {
             width: 100%;
             height: 4px;
@@ -95,13 +102,26 @@ $allproducts = $ppp->fetchAllproducts();
             background: #334155;
             border-radius: 2px;
         }
-        
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #050505; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
-        ::-webkit-scrollbar-thumb:hover { background: #00f3ff; }
+
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f3ff;
+        }
     </style>
 </head>
+
 <body>
 
     <div class="bg-[#0a0b10] border-b border-white/5 py-10 text-center">
@@ -117,7 +137,7 @@ $allproducts = $ppp->fetchAllproducts();
                     <span class="text-[10px] text-cyber-cyan font-mono tracking-widest opacity-70">SYSTEM INVENTORY</span>
                 </div>
             </div>
-            
+
             <h1 class="font-display text-4xl md:text-5xl font-bold text-white uppercase italic">
                 Full <span class="text-cyber-cyan">Catalog</span>
             </h1>
@@ -143,44 +163,45 @@ $allproducts = $ppp->fetchAllproducts();
             </div>
 
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                <?php foreach($allproducts as $product) :?>
-                <div class="product-card bg-cyber-card border border-white/5 rounded-none clip-notch-sm overflow-hidden group">
-                    <div class="relative h-40 bg-[#0f111a] flex items-center justify-center p-4">
-                        <div class="absolute top-2 right-2 z-10">
-                            <?php $stock = null;
-                            $color = null;
-                            if($product->getInStock()){
-                                $stock = "In Stock";
-                                $color = "green";
-                            }
-                            else{
-                                $stock = "Out of stock";
-                                $color = "red";
-                            }
-                            ?>
-                            <span class="bg-<?= $color ?>-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-sm uppercase"><?= $stock ?></span>
+                <?php foreach ($allproducts as $product) : ?>
+                    <div class="product-card bg-cyber-card border border-white/5 rounded-none clip-notch-sm overflow-hidden group">
+                        <div class="relative h-40 bg-[#0f111a] flex items-center justify-center p-4">
+                            <div class="absolute top-2 right-2 z-10">
+                                <?php $stock = null;
+                                $color = null;
+                                if ($product->getInStock()) {
+                                    $stock = "In Stock";
+                                    $color = "green";
+                                } else {
+                                    $stock = "Out of stock";
+                                    $color = "red";
+                                }
+                                ?>
+                                <span class="bg-<?= $color ?>-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-sm uppercase"><?= $stock ?></span>
+                            </div>
+                            <img src="<?= $product->getImage() ?>" alt="<?= $product->getName() ?>" class="h-full w-full object-cover product-image">
                         </div>
-                        <img src="<?= $product->getImage() ?>" alt="<?= $product->getName() ?>" class="h-full w-full object-cover product-image">
-                        </div>
-                    <div class="p-3 border-t border-white/5">
-                        <div class="text-[10px] text-gray-500 mb-1"><?= $product->getCategory() ?></div>
-                        <h3 class="text-white font-bold text-sm leading-tight mb-2 group-hover:text-cyber-cyan transition-colors line-clamp-2"><?= $product->getName() ?></h3>
-                        <div class="flex items-center gap-0.5 mb-3">
-                            <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
-                            <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
-                            <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
-                            <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
-                            <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
-                            <span class="text-[10px] text-gray-500 ml-1">(42)</span>
-                        </div>
-                        <div class="flex items-center justify-between mt-auto">
-                            <span class="text-lg font-display font-bold text-white">$<?= $product->getPrice() ?></span>
-                            <button class="w-7 h-7 flex items-center justify-center bg-cyber-input hover:bg-cyber-cyan hover:text-black text-cyber-cyan border border-cyber-cyan/30 rounded-sm transition-all">
-                                <i class="fa-solid fa-plus text-xs"></i>
-                            </button>
+                        <div class="p-3 border-t border-white/5">
+                            <div class="text-[10px] text-gray-500 mb-1"><?= $product->getCategory() ?></div>
+                            <h3 class="text-white font-bold text-sm leading-tight mb-2 group-hover:text-cyber-cyan transition-colors line-clamp-2"><?= $product->getName() ?></h3>
+                            <div class="flex items-center gap-0.5 mb-3">
+                                <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
+                                <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
+                                <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
+                                <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
+                                <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
+                                <span class="text-[10px] text-gray-500 ml-1">(42)</span>
+                            </div>
+                            <div class="flex items-center justify-between mt-auto">
+                                <span class="text-lg font-display font-bold text-white">$<?= $product->getPrice() ?></span>
+                                <form method="POST" action="add_to_cart_script.php"> <input type="hidden" name="product_id" value="<?= $product->getId() ?>">
+                                    <button type="submit" class="w-7 h-7 flex items-center justify-center bg-cyber-input hover:bg-cyber-cyan hover:text-black text-cyber-cyan border border-cyber-cyan/30 rounded-sm transition-all">
+                                        <i class="fa-solid fa-plus text-xs"></i>
+                                    </button>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                </div>
                 <?php endforeach ?>
             </div>
         </main>
@@ -193,4 +214,5 @@ $allproducts = $ppp->fetchAllproducts();
     </footer>
 
 </body>
+
 </html>
