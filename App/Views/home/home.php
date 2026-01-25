@@ -1,3 +1,8 @@
+<?php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -96,13 +101,11 @@
 </head>
 <body>
 
-    <!-- Navigation -->
     <nav class="sticky top-0 z-50 bg-cyber-dark/80 backdrop-blur-lg border-b border-white/10">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex items-center justify-between h-20">
                 
-                <!-- Logo -->
-                <a href="#" class="flex items-center gap-3 group">
+                <a href="/" class="flex items-center gap-3 group">
                     <div class="relative w-10 h-10 flex items-center justify-center bg-black border border-cyber-cyan clip-notch-sm group-hover:border-cyber-pink transition-colors">
                         <i class="fa-solid fa-dragon text-xl text-cyber-cyan group-hover:text-cyber-pink transition-colors"></i>
                     </div>
@@ -113,7 +116,6 @@
                     </div>
                 </a>
 
-                <!-- Search Bar (Desktop) -->
                 <div class="hidden md:flex flex-1 max-w-lg mx-8">
                     <div class="relative w-full group">
                         <input type="text" placeholder="Search components, laptops, gear..." 
@@ -124,16 +126,36 @@
                     </div>
                 </div>
 
-                <!-- Right Actions -->
                 <div class="flex items-center gap-6">
-                    <a href="/login" class="hidden md:flex items-center gap-2 text-sm font-medium text-gray-400 hover:text-white transition-colors">
-                        <i class="fa-regular fa-user"></i> Sign In
-                    </a>
+                    
+                    <?php if (isset($_SESSION['user_id'])): ?>
+                        <div class="hidden md:flex items-center gap-4 group">
+                            <div class="flex flex-col text-right leading-none">
+                                <span class="text-[10px] text-gray-500 uppercase tracking-widest">Operator</span>
+                                <span class="text-cyber-cyan font-display font-bold text-lg tracking-wide uppercase drop-shadow-[0_0_5px_rgba(0,243,255,0.5)]">
+                                    <?php echo htmlspecialchars($_SESSION['firstname'] ?? 'User'); ?>
+                                </span>
+                            </div>
+
+                            <div class="w-10 h-10 border border-cyber-cyan bg-cyber-card flex items-center justify-center rounded-sm shadow-[0_0_10px_rgba(0,243,255,0.2)]">
+                                <i class="fa-solid fa-user-astronaut text-cyber-pink"></i>
+                            </div>
+
+                            <a href="/logout" class="ml-2 text-gray-500 hover:text-red-500 transition-colors text-sm" title="Sign Out">
+                                <i class="fa-solid fa-power-off"></i>
+                            </a>
+                        </div>
+                    <?php else: ?>
+                        <a href="/login" class="hidden md:flex items-center gap-2 text-sm font-medium text-gray-400 hover:text-white transition-colors">
+                            <i class="fa-regular fa-user"></i> Sign In
+                        </a>
+                    <?php endif; ?>
+
                     <a href="#" class="relative group">
                         <i class="fa-solid fa-cart-shopping text-gray-400 group-hover:text-cyber-cyan text-lg transition-colors"></i>
                         <span class="absolute -top-2 -right-2 bg-cyber-pink text-white text-[10px] font-bold px-1.5 py-0.5 rounded-sm">2</span>
                     </a>
-                    <!-- Mobile Menu Button -->
+                    
                     <button class="md:hidden text-gray-400 hover:text-white">
                         <i class="fa-solid fa-bars text-xl"></i>
                     </button>
@@ -142,9 +164,7 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <div class="relative overflow-hidden h-[500px] md:h-[600px] flex items-center">
-        <!-- Background with Overlay -->
         <div class="absolute inset-0 z-0">
             <img src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" 
                  class="w-full h-full object-cover opacity-40" alt="Gaming Setup">
@@ -168,11 +188,9 @@
                     Experience the next generation of computing. The RTX 50-Series is here, redefining performance for creators and gamers alike.
                 </p>
 
-                <!-- Buttons removed -->
-            </div>
+                </div>
         </div>
 
-        <!-- Decorative Elements -->
         <div class="absolute bottom-0 right-0 p-10 hidden lg:block animate-float">
              <div class="relative">
                 <div class="absolute inset-0 bg-cyber-cyan blur-[60px] opacity-20"></div>
@@ -181,11 +199,9 @@
         </div>
     </div>
 
-    <!-- Categories -->
     <div class="py-12 bg-cyber-card border-y border-white/5">
         <div class="max-w-7xl mx-auto px-4">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <!-- Category Item -->
                 <a href="#" class="group relative h-32 overflow-hidden clip-notch-sm bg-cyber-input border border-white/5 hover:border-cyber-cyan transition-colors">
                     <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent z-10"></div>
                     <img src="https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=400&q=80" class="w-full h-full object-cover opacity-60 group-hover:scale-110 transition-transform duration-500" alt="Components">
@@ -225,7 +241,6 @@
         </div>
     </div>
 
-    <!-- Featured Products -->
     <div id="products" class="py-16 max-w-7xl mx-auto px-4">
         <div class="flex items-end justify-between mb-10 border-b border-white/10 pb-4">
             <div>
@@ -239,7 +254,6 @@
 
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
             
-            <!-- Product 1 -->
             <div class="product-card bg-cyber-card border border-white/5 rounded-none clip-notch-sm overflow-hidden group">
                 <div class="relative h-48 bg-[#0f111a] flex items-center justify-center p-4">
                     <div class="absolute top-2 right-2 z-10">
@@ -267,7 +281,6 @@
                 </div>
             </div>
 
-            <!-- Product 2 -->
             <div class="product-card bg-cyber-card border border-white/5 rounded-none clip-notch-sm overflow-hidden group">
                 <div class="relative h-48 bg-[#0f111a] flex items-center justify-center p-4">
                      <i class="fa-solid fa-laptop-code text-6xl text-gray-700 group-hover:text-cyber-pink transition-colors duration-300 drop-shadow-[0_0_15px_rgba(255,0,255,0.3)] product-image"></i>
@@ -292,7 +305,6 @@
                 </div>
             </div>
 
-            <!-- Product 3 -->
             <div class="product-card bg-cyber-card border border-white/5 rounded-none clip-notch-sm overflow-hidden group">
                 <div class="relative h-48 bg-[#0f111a] flex items-center justify-center p-4">
                     <i class="fa-solid fa-keyboard text-6xl text-gray-700 group-hover:text-cyber-purple transition-colors duration-300 drop-shadow-[0_0_15px_rgba(189,0,255,0.3)] product-image"></i>
@@ -317,7 +329,6 @@
                 </div>
             </div>
 
-            <!-- Product 4 -->
             <div class="product-card bg-cyber-card border border-white/5 rounded-none clip-notch-sm overflow-hidden group">
                 <div class="relative h-48 bg-[#0f111a] flex items-center justify-center p-4">
                      <div class="absolute top-2 right-2 z-10">
@@ -348,7 +359,6 @@
         </div>
     </div>
 
-    <!-- Newsletter -->
     <div class="bg-gradient-to-r from-cyber-card to-[#0f111a] py-16 border-y border-white/5">
         <div class="max-w-4xl mx-auto px-4 text-center">
             <i class="fa-solid fa-envelope-open-text text-4xl text-cyber-pink mb-4"></i>
@@ -365,10 +375,8 @@
         </div>
     </div>
 
-    <!-- Footer -->
     <footer class="bg-cyber-dark pt-12 pb-8 border-t border-white/5">
         <div class="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            <!-- Brand -->
             <div class="col-span-1 md:col-span-1">
                 <div class="flex items-center gap-2 mb-4">
                     <i class="fa-solid fa-dragon text-cyber-cyan text-xl"></i>
@@ -390,7 +398,6 @@
                 </div>
             </div>
 
-            <!-- Links -->
             <div>
                 <h4 class="text-white font-bold uppercase tracking-wider text-sm mb-4">Shop</h4>
                 <ul class="space-y-2 text-sm text-gray-500">
