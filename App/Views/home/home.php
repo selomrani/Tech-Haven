@@ -151,9 +151,9 @@ if (session_status() === PHP_SESSION_NONE) {
                         </a>
                     <?php endif; ?>
 
-                    <a href="#" class="relative group">
+                    <a href="/cart" class="relative group">
                         <i class="fa-solid fa-cart-shopping text-gray-400 group-hover:text-cyber-cyan text-lg transition-colors"></i>
-                        <span class="absolute -top-2 -right-2 bg-cyber-pink text-white text-[10px] font-bold px-1.5 py-0.5 rounded-sm">2</span>
+                        <span class="absolute -top-2 -right-2 bg-cyber-pink text-white text-[10px] font-bold px-1.5 py-0.5 rounded-sm"></span>
                     </a>
                     
                     <button class="md:hidden text-gray-400 hover:text-white">
