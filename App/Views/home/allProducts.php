@@ -2,7 +2,7 @@
 use App\Models\Product;
 require_once __DIR__ . './../../../vendor/autoload.php';
 $ppp = new Product();
-$allorders = $ppp->fetchAllproducts();
+$allproducts = $ppp->fetchAllproducts();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -148,17 +148,28 @@ $allorders = $ppp->fetchAllproducts();
 
             <!-- Grid Container (Expanded to 4 columns) -->
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                <?php foreach($allorders as $order) ?>
+                <?php foreach($allproducts as $product) :?>
                 <div class="product-card bg-cyber-card border border-white/5 rounded-none clip-notch-sm overflow-hidden group">
                     <div class="relative h-40 bg-[#0f111a] flex items-center justify-center p-4">
                         <div class="absolute top-2 right-2 z-10">
-                            <span class="bg-red-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-sm uppercase">Hot</span>
+                            <?php $stock = null;
+                            $color = null;
+                            if($product->getInStock()){
+                                $stock = "In Stock";
+                                $color = "green";
+                            }
+                            else{
+                                $stock = "Out of stock";
+                                $color = "red";
+                            }
+                            ?>
+                            <span class="bg-<?= $color ?>-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-sm uppercase"><?= $stock ?></span>
                         </div>
                         <i class="fa-solid fa-microchip text-6xl text-gray-700 group-hover:text-cyber-cyan transition-colors duration-300 drop-shadow-[0_0_15px_rgba(0,243,255,0.3)] product-image"></i>
                     </div>
                     <div class="p-3 border-t border-white/5">
-                        <div class="text-[10px] text-gray-500 mb-1">Graphics Cards</div>
-                        <h3 class="text-white font-bold text-sm leading-tight mb-2 group-hover:text-cyber-cyan transition-colors line-clamp-2">NVIDIA GeForce RTX 5090</h3>
+                        <div class="text-[10px] text-gray-500 mb-1">SUU</div>
+                        <h3 class="text-white font-bold text-sm leading-tight mb-2 group-hover:text-cyber-cyan transition-colors line-clamp-2"><?= $product->getName() ?></h3>
                         <div class="flex items-center gap-0.5 mb-3">
                             <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
                             <i class="fa-solid fa-star text-cyber-yellow text-[10px]"></i>
@@ -168,13 +179,14 @@ $allorders = $ppp->fetchAllproducts();
                             <span class="text-[10px] text-gray-500 ml-1">(42)</span>
                         </div>
                         <div class="flex items-center justify-between mt-auto">
-                            <span class="text-lg font-display font-bold text-white">$1,999</span>
+                            <span class="text-lg font-display font-bold text-white">$<?= $product->getPrice() ?></span>
                             <button class="w-7 h-7 flex items-center justify-center bg-cyber-input hover:bg-cyber-cyan hover:text-black text-cyber-cyan border border-cyber-cyan/30 rounded-sm transition-all">
                                 <i class="fa-solid fa-plus text-xs"></i>
                             </button>
                         </div>
                     </div>
                 </div>
+                <?php endforeach ?>
             </div>
         </main>
     </div>

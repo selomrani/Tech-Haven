@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Rajdhani:wght@500;600;700;800&display=swap" rel="stylesheet">
-    
+
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -36,13 +37,13 @@
         body {
             font-family: 'Inter', sans-serif;
             background-color: #050505;
-            background-image: 
+            background-image:
                 linear-gradient(rgba(0, 243, 255, 0.02) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 243, 255, 0.02) 1px, transparent 1px);
             background-size: 30px 30px;
             color: #e2e8f0;
         }
-        
+
         .gaming-text-gradient {
             background: linear-gradient(to right, #00f3ff, #ff00ff);
             background-clip: text;
@@ -55,22 +56,34 @@
         }
 
         .clip-notch-btn {
-            clip-path: polygon(
-                0 0, 
-                100% 0, 
-                100% calc(100% - 10px), 
-                calc(100% - 10px) 100%, 
-                0 100%
-            );
+            clip-path: polygon(0 0,
+                    100% 0,
+                    100% calc(100% - 10px),
+                    calc(100% - 10px) 100%,
+                    0 100%);
         }
 
         /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 6px; height: 6px; }
-        ::-webkit-scrollbar-track { background: #050505; }
-        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
-        ::-webkit-scrollbar-thumb:hover { background: #00f3ff; }
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #334155;
+            border-radius: 3px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #00f3ff;
+        }
     </style>
 </head>
+
 <body class="flex h-screen overflow-hidden">
 
     <!-- Sidebar -->
@@ -105,7 +118,7 @@
                 <i class="fa-solid fa-users w-5 text-center group-hover:text-cyber-purple transition-colors"></i>
                 Customers
             </a>
-             <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-gray-400 hover:text-white hover:bg-white/5 rounded-sm transition-colors group">
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-sm font-medium text-gray-400 hover:text-white hover:bg-white/5 rounded-sm transition-colors group">
                 <i class="fa-solid fa-sliders w-5 text-center group-hover:text-cyber-yellow transition-colors"></i>
                 Settings
             </a>
@@ -130,7 +143,7 @@
     <main class="flex-1 flex flex-col h-screen overflow-hidden relative">
         <!-- Top Bar (Mobile Only/Actions) -->
         <header class="h-16 bg-cyber-card/50 backdrop-blur border-b border-white/5 flex items-center justify-between px-6">
-             <button class="md:hidden text-white">
+            <button class="md:hidden text-white">
                 <i class="fa-solid fa-bars text-lg"></i>
             </button>
             <div class="flex items-center gap-4 ml-auto">
@@ -143,7 +156,7 @@
 
         <!-- Content Area -->
         <div class="flex-1 overflow-y-auto p-6 lg:p-10">
-            
+
             <div class="max-w-6xl mx-auto">
                 <!-- Header -->
                 <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
@@ -154,10 +167,10 @@
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                    
+
                     <!-- Left: Add New Product Form -->
                     <div class="lg:col-span-2">
-                         <!-- Feedback Message Container -->
+                        <!-- Feedback Message Container -->
                         <div id="message-container" class="hidden mb-6 p-4 rounded bg-green-500/10 border border-green-500/20 text-green-400 text-sm flex items-center gap-3 clip-notch-btn">
                             <i class="fa-solid fa-check-circle text-lg"></i>
                             <div>
@@ -168,17 +181,17 @@
 
                         <div class="bg-cyber-card border border-white/5 p-6 relative overflow-hidden clip-notch">
                             <div class="absolute top-0 right-0 w-20 h-20 bg-cyber-cyan/5 rounded-full blur-2xl"></div>
-                            
+
                             <h2 class="font-display text-lg font-bold text-white uppercase mb-6 flex items-center gap-2">
                                 <i class="fa-solid fa-plus text-cyber-cyan"></i> Add New Product
                             </h2>
 
-                            <form   action ="../../Controllers/AdminController.php" method="post" id="addProductForm" class="space-y-6">
+                            <form action="../../Controllers/AdminController.php" method="post" id="addProductForm" class="space-y-6">
                                 <!-- Product Name -->
                                 <div class="space-y-1">
                                     <label class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Product Name</label>
                                     <input type="text" name="name" required
-                                        class="w-full bg-cyber-input border border-gray-700 text-white text-sm p-3 focus:outline-none focus:border-cyber-cyan focus:ring-1 focus:ring-cyber-cyan transition-all placeholder-gray-600 rounded-none" 
+                                        class="w-full bg-cyber-input border border-gray-700 text-white text-sm p-3 focus:outline-none focus:border-cyber-cyan focus:ring-1 focus:ring-cyber-cyan transition-all placeholder-gray-600 rounded-none"
                                         placeholder="e.g. GeForce RTX 5090 Founder's Edition">
                                 </div>
 
@@ -189,20 +202,26 @@
                                         <div class="relative">
                                             <span class="absolute left-3 top-3 text-gray-500">$</span>
                                             <input type="number" name="price" step="0.01" required
-                                                class="w-full bg-cyber-input border border-gray-700 text-white text-sm p-3 pl-7 focus:outline-none focus:border-cyber-cyan focus:ring-1 focus:ring-cyber-cyan transition-all placeholder-gray-600 rounded-none" 
+                                                class="w-full bg-cyber-input border border-gray-700 text-white text-sm p-3 pl-7 focus:outline-none focus:border-cyber-cyan focus:ring-1 focus:ring-cyber-cyan transition-all placeholder-gray-600 rounded-none"
                                                 placeholder="1999.00">
                                         </div>
                                     </div>
                                     <div class="space-y-1">
                                         <label class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Category</label>
-                                        <select class="w-full bg-cyber-input border border-gray-700 text-white text-sm p-3 focus:outline-none focus:border-cyber-cyan focus:ring-1 focus:ring-cyber-cyan transition-all rounded-none appearance-none cursor-pointer">
-                                            <option value="gpu">Graphics Cards</option>
-                                            <option value="cpu">Processors</option>
-                                            <option value="laptop">Laptops</option>
-                                            <option value="peripheral">Peripherals</option>
-                                        </select>
-                                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-500">
-                                            <i class="fa-solid fa-chevron-down text-xs"></i>
+                                        <div class="relative">
+                                            <select name="category" required class="w-full bg-cyber-input border border-gray-700 text-white text-sm p-3 focus:outline-none focus:border-cyber-cyan focus:ring-1 focus:ring-cyber-cyan transition-all rounded-none appearance-none cursor-pointer">
+                                                <option value="" disabled selected>Select Category</option>
+
+                                                <option value="GPU">GPU</option>
+                                                <option value="CPU">CPU</option>
+                                                <option value="gaming laptop">Gaming Laptop</option>
+                                                <option value="prebuilt">Prebuilt PC</option>
+                                                <option value="peripheral">Peripheral</option>
+                                            </select>
+
+                                            <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-4 text-gray-500">
+                                                <i class="fa-solid fa-chevron-down text-xs"></i>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -211,7 +230,7 @@
                                 <div class="space-y-1">
                                     <label class="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Description</label>
                                     <textarea name="description" rows="4" required
-                                        class="w-full bg-cyber-input border border-gray-700 text-white text-sm p-3 focus:outline-none focus:border-cyber-cyan focus:ring-1 focus:ring-cyber-cyan transition-all placeholder-gray-600 rounded-none resize-none" 
+                                        class="w-full bg-cyber-input border border-gray-700 text-white text-sm p-3 focus:outline-none focus:border-cyber-cyan focus:ring-1 focus:ring-cyber-cyan transition-all placeholder-gray-600 rounded-none resize-none"
                                         placeholder="Enter detailed product specifications and features..."></textarea>
                                 </div>
 
@@ -241,7 +260,7 @@
                                 <span>Recent Additions</span>
                                 <a href="#" class="text-[10px] text-cyber-cyan hover:underline">View All</a>
                             </h3>
-                            
+
                             <div class="space-y-4" id="recentProductsList">
                                 <!-- Mock Item 1 -->
                                 <div class="flex gap-3 items-start group">
@@ -293,4 +312,5 @@
     </main>
     <script src="../../../public/assets/js/dashboard.js"></script>
 </body>
+
 </html>
